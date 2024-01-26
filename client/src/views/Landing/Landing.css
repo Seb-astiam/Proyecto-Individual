@@ -1,0 +1,55 @@
+.fondo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-image: url('../../assets/pikachuLa.png'), linear-gradient(#FFFFE0, #FFFF00, #FFD700);
+    background-repeat: no-repeat, no-repeat;
+    background-position: bottom 100px right 300px, right;
+    
+    min-height: 100vh;
+    min-width: 100vh;
+}
+
+.imagen{
+    width: 1000px;
+    height: 500px;
+}   
+
+.titulo {
+    font-family: monospace;
+}
+
+.link{
+    text-decoration: none;
+    font-family: "Pokemon Solid", sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #0054fc;
+}
+
+.boton{
+    background-image: url("../../assets/pokeballCerrada.png");
+    
+    margin: 50px;
+    width: 130px;
+    height: 130px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+    border: solid 1px;
+
+    transition: background-image 0.3s ease;
+
+
+
+}
+
+.boton:hover{
+    background-image: url("../../assets/pokeballAbierta.png");
+}
+
+
+
