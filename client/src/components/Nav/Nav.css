@@ -1,0 +1,31 @@
+.container-Nav {
+    display: flex;
+    justify-content: space-evenly;
+
+    width: 50%;
+
+
+    margin-bottom: 70px;
+}
+
+.Nav-link {
+    padding: 5px;
+
+    background-color: whitesmoke;
+
+    border: 2px solid black;
+    border-radius: 8px;
+
+    text-decoration: none;
+    text-align: center;
+    font-family: monospace;
+
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.Nav-link:active {
+    background-color: #ccc; 
+    transform: translateY(2px); 
+}

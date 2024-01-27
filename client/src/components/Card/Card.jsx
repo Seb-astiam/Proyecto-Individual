@@ -1,3 +1,6 @@
+import { NavLink } from "react-router-dom";
+import "./Card.css"
+
 const Card = ({ pokemon }) => {
     const { id, imagen, name, types } = pokemon;
 
@@ -6,14 +9,11 @@ const Card = ({ pokemon }) => {
     
 
     return ( 
-        <tr>
-            <td>{id}</td>
-            <td><strong>{name}</strong></td>
-            <td>
-                <img src={imagen} alt="Imagen" />
-                <p> {typeNames.join("  ")} </p>
-            </td>
-        </tr>
+        <div className="container-card">
+            <img src={imagen} alt="Imagen" />
+            <NavLink to={`/Home/${id}`}><p>#{id} <strong>{name}</strong></p></NavLink>
+            <p className="type"> {typeNames.join("  ")} </p>
+        </div>
     )
 }
 

@@ -1,31 +1,14 @@
 import Card from "../Card/Card";
 
+import "./Cards.css"
+
 const Cards = ({ pokemons }) => {
 
     return (
-        <div> 
-            <div>
-
-            </div>
-            <div>
-                <table>
-                    
-                    <thead>
-                        <tr>
-                            <td>ID</td>
-                            <td>NAME</td>
-                            <td>POKEMON AND TYPE</td>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {pokemons.map((pokemon)=> 
-                            <Card pokemon={pokemon} key={pokemon.id} />
-                        )}
-                    </tbody>
-
-                </table>
-            </div>
+        <div className="container-cards"> 
+            {pokemons.map((pokemon)=> 
+                <Card pokemon={pokemon} key={pokemon.id} />
+            )}
         </div>
     )
 }

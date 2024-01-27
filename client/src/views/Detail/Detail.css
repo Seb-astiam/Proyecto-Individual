@@ -1,0 +1,47 @@
+.container-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    background-color: rgb(209, 209, 209);
+    
+    padding: 20px;
+    height: 100vh;
+}
+
+.P {
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 900px;
+
+
+}
+
+.red-border {
+    background-color: beige;
+}
+
+.green-border {
+    background-color: rgb(3, 250, 11)
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: -70px;
+
+    height: 530px;
+    width: 60vh;
+    background-color: aqua;
+    border-radius: 30px;
+
+    
+}

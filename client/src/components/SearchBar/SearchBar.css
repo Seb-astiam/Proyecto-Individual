@@ -1,0 +1,21 @@
+.container-searchBar{
+    margin: 0 0 30px 0;
+}
+
+
+.input {
+    width: 250px;
+    padding: 5px;
+    height: 30px;
+
+    border-radius: 8px;
+    border: solid black 2px;
+}
+
+.btn {
+    margin-left: 5px ;
+    height: 30px;
+    padding: 5px;
+    border: solid black 2px;
+    border-radius: 8px;
+}

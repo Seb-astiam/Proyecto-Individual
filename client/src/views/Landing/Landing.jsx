@@ -10,7 +10,7 @@ const Landing = () => {
         <div className="fondo">
             <img src={pokeImagen} className="imagen"/>
             <h1 className="titulo">WebApi creada por Sebastian Agudelo</h1>
-            <button className="boton"><NavLink to="/Home" className="link">Home</NavLink></button>
+            <NavLink to="/Home" className="link">Enter</NavLink>
         </div>
     )
 }
