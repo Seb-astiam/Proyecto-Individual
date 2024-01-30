@@ -22,7 +22,7 @@ const useHome = () => {
           };
         
           fetchData();
-    }, [])
+    }, [dispatch])
 
     return pokemons
 }

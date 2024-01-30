@@ -4,15 +4,15 @@ import "./Card.css"
 const Card = ({ pokemon }) => {
     const { id, imagen, name, types } = pokemon;
 
-    const typeNames = types.map(type => type.type.name);
-    
-    
-
     return ( 
-        <div className="container-card">
-            <img src={imagen} alt="Imagen" />
-            <NavLink to={`/Home/${id}`}><p>#{id} <strong>{name}</strong></p></NavLink>
-            <p className="type"> {typeNames.join("  ")} </p>
+        <div>
+            <div className={`container-card`}>
+                <NavLink to={`/Home/${id}`} className="link-card"><p >No.{id} <strong>{name.toUpperCase()}</strong></p></NavLink>
+                <img src={imagen} alt="Imagen" className="imagen-card" />
+                <div className="row-p">
+                    <p className={types?.split(",")[0]}>{types?.split(",")[0]}</p><p className={types?.split(",")[1]}>{types?.split(",")[1]}</p>
+                </div>
+            </div>
         </div>
     )
 }

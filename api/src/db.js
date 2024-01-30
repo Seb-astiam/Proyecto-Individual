@@ -1,12 +1,14 @@
-// require('dotenv').config();
+require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-// const { DB_USER, DB_PASSWORD, DB_HOST, PORT } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
 
-const sequelize = new Sequelize(
-   // `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PORT}/pokemon`,
-   {
+if (!DB_USER || !DB_PASSWORD || !DB_HOST || !DB_PORT) {
+   throw new Error('Faltan variables de entorno para la conexión a la base de datos.');
+}
+
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/pokemon`, {
       logging: false, // set to console.log to see the raw SQL queries
       native: false, // lets Sequelize know we can use pg-native for ~30% more speed
    }

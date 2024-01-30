@@ -53,20 +53,50 @@ const Detail = () => {
 
     const { name, imagen, stats, height, weight, types } = pokemon;
 
+
     return (
         <div className="container-detail">
 
-            <div className="detail">
-                <h1>#{id}</h1>
-                <img src={imagen}/>
-                <h1>{name}</h1>
-                <p><strong>Weight:</strong> {weight} , <strong>Height:</strong> {height} </p>
-                <NavLink to="/Home">Home</NavLink>
+            <div className="detail" >
+
+                <div className="head-detail">
+                    <div className="idName">
+                        <h2>No.{id}</h2>
+                        <h2 className="name">{name?.toUpperCase()}</h2>
+
+                    </div>
+
+                    <img src={imagen} className="img-detail"/>
+
+                </div>
+
+                <div className="body-detail">
+
+                    <div className="parte1Body">
+                        <p><strong>Weight:</strong> {weight}</p>
+                        <p><strong>Height:</strong> {height}</p>
+                    </div>
+
+                    <div> 
+                        {stats?.map((stat)=> 
+                            <div className="container-stats">
+                                <p><strong className={stat[0]}>{stat[0]?.toUpperCase()}:</strong></p>
+                                <p className="baseStat">{stat[1]}</p>
+                            </div>
+                        )}
+                        </div>
+
+                    <NavLink to="/Home" className="linkHomeD">HOME</NavLink>
+
+                </div>
+        
             </div>
 
             <div className="P">
                 {numPokes.map((poke)=> 
-                    <Card key={poke.id}  pokemon={poke} className={poke.id < parseInt(id) ? 'red-border' : 'green-border'} />
+                    <div className="A">
+                        <Card key={poke.name}  pokemon={poke} className="card-detail" />
+                    </div>
                 )}
             </div>
 

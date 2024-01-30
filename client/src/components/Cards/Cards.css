@@ -1,6 +1,57 @@
+
+.container-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.numberPage {
+    color: gold;
+    font-family: monospace;
+    font-size:x-large;
+    text-shadow: 2px 2px 1px black;
+    background-color: white;
+    padding: 8px;
+    border: 3px solid gold;
+    border-radius: 20px;
+    box-shadow: 2px 2px 1px black;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 .container-cards{
     display: flex;
     flex-flow: row wrap;
+    align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 80%;
+    margin-bottom: 40px;
+
+}
+
+.btn-cards {
+    display: flex;
+    justify-content: center;
+
+    background-color: 	#DC143C;
+    color: white;
+    padding: 8px 11px;
+    width: 70px;
+
+    font-family: monospace;
+    font-size: 20px;
+    text-shadow: 1px 1px 1px black;
+    border: 3px outset black;
+    border-radius: 8px;
+}
+
+.btn-cards:active {
+    border: 5px inset;
+    transform: translateY(2px); 
 }

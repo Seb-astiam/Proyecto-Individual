@@ -1,0 +1,26 @@
+.container-notFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url("./IMG_7917.PNG");
+    background-size: 300px;
+    background-repeat: no-repeat;
+    background-position: center; */
+
+    height: 100vh;
+}
+
+.img404 {
+    height: 280px;
+    width: 230px;
+}
+
+.texto-notfound {
+    font-family: "Roboto Mono", monospace;
+}
+
+.link-notfound {
+    text-decoration: none;
+    font-family: "Roboto Mono", monospace;
+}

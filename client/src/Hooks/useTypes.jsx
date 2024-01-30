@@ -19,7 +19,7 @@ const useTypes = () => {
         }
 
         fetchData();
-    }, [])
+    }, [dispatch])
 
     return types;
 }

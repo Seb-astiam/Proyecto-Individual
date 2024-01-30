@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     pokemons: [],
-    pokemonDetail: []
+    pokemonDetail: [],
+    filterPokemon: []
 }
 
 export const pokeSlice = createSlice({
@@ -17,10 +18,13 @@ export const pokeSlice = createSlice({
         },
         getPokemonById: (state, actions) => {
             state.pokemonDetail = actions.payload;
+        },
+        filterPokemonType: (state, actions) => {
+            state.filterPokemon = actions.payload
         }
     }
 })
 
-export const { getAllPokemons, getPokemonByName, getPokemonById } = pokeSlice.actions
+export const { getAllPokemons, getPokemonByName, getPokemonById, filterPokemonType } = pokeSlice.actions
 
 export default pokeSlice.reducer

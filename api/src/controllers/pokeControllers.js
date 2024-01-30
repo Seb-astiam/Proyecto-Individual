@@ -2,11 +2,9 @@ const { Pokemon, Type } = require("../db");
 
 const axios = require("axios");
 
-// require("dotenv").config();
+require("dotenv").config();
 
-// const { URL } = process.env;
-
-const URL = "https://pokeapi.co/api/v2/pokemon"
+const { URL } = process.env;
 
 const getInfoAPI = async ({ URL, id, name }) => {
     if(name){
@@ -16,14 +14,13 @@ const getInfoAPI = async ({ URL, id, name }) => {
             id: responseAPI.data.id,
             name: responseAPI.data.name,
             imagen: responseAPI.data.sprites.front_default,
-            types: responseAPI.data.types
+            types: responseAPI.data.types.map(type => type.type.name).join(", ")
           };
 
         return filtradoInfoAPI
     }
     if (URL && !id) {
-        const responseAPI = await axios.get(`${URL}?offset=0&limit=30`);
-        // ?offset=0&limit=30
+        const responseAPI = await axios.get(`${URL}?offset=0&limit=50`);
         const segundaVuelta = responseAPI.data.results;
         const terceraVuelta = await segundaVuelta.map((pokemon) => {
             return pokemon.name
@@ -36,7 +33,13 @@ const getInfoAPI = async ({ URL, id, name }) => {
             id: responseAPI.data.id,
             name: responseAPI.data.name,
             imagen: responseAPI.data.sprites.front_default,
-            stats: responseAPI.data.stats,
+            stats: responseAPI.data.stats.map((stat) => {
+                const nameStat = stat.stat.name
+        
+                const baseStat = stat.base_stat
+        
+                return [nameStat, baseStat]
+            }),
             height: responseAPI.data.height,
             weight: responseAPI.data.weight,
             types: responseAPI.data.types
