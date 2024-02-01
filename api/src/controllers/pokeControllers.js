@@ -74,8 +74,13 @@ const getPokemonsControllers = async () => {
 
 const getPokemonByNameControllers = async (name) => {
     try {
-        const pokemonsByName = await getInfoAPI({ URL, name});
-        return [pokemonsByName];
+        if(name) {
+            const pokemonDB = await Pokemon.findAll({where: {name: name}});
+            return pokemonDB
+        } else {
+            const pokemonsByName = await getInfoAPI({ URL, name});
+            return pokemonsByName
+        }
     }
     catch (error) {
         console.error("Error en getPokemonByNameControllers:", error);
@@ -108,8 +113,8 @@ const getPokemonByIdControllers = async (id, source) => {
     }
 }
 
-const createPokemonControllers = async ({ name, imagen, vida, ataque, defensa, velocidad, altura, peso, types }) => {
-    const newPokemon = await Pokemon.create({ name, imagen, vida, ataque, defensa, velocidad, altura, peso });
+const createPokemonControllers = async ({  name, imagen, hp, attack, defense, specialAttack, specialDefense, speed, height, weight, types  }) => {
+    const newPokemon = await Pokemon.create({  name, imagen, hp, attack, defense, specialAttack, specialDefense, speed, height, weight, types });
 
     newPokemon.addType(types);
 

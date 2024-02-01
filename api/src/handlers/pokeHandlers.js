@@ -34,17 +34,19 @@ const createPokemonHandler = async (req, res) => {
     const { 
         name, 
         imagen, 
-        vida, 
-        ataque, 
-        defensa, 
-        velocidad, 
-        altura, 
-        peso,
+        hp, 
+        attack, 
+        defense, 
+        specialAttack,
+        specialDefense,
+        speed, 
+        height, 
+        weight,
         types  } = req.body;
 
     
     try {
-        const pokeCreate = await createPokemonControllers({ name, imagen, vida, ataque, defensa, velocidad, altura, peso, types });
+        const pokeCreate = await createPokemonControllers({ name, imagen, hp, attack, defense, specialAttack, specialDefense, speed, height, weight, types });
         return res.status(201).json(pokeCreate);
     }
     catch (error) {

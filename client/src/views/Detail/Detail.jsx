@@ -19,11 +19,11 @@ const Detail = () => {
 
     let numPokes;
     if (parseInt(id) === 1) {
-        numPokes = pokemonesFiltrados.slice(parseInt(id)-1, parseInt(id) + 4);
+        numPokes = pokemonesFiltrados.slice(parseInt(id)-1, parseInt(id) + 3);
     } else if (parseInt(id) === 2) {
-        numPokes = pokemonesFiltrados.slice(parseInt(id) - 2, parseInt(id) + 3);
+        numPokes = pokemonesFiltrados.slice(parseInt(id) - 1, parseInt(id) + 3);
     } else {
-        numPokes = pokemonesFiltrados.slice(parseInt(id) - 3, parseInt(id) + 1);
+        numPokes = pokemonesFiltrados.slice(parseInt(id) - 2, parseInt(id) + 2);
     }
     
 
@@ -51,7 +51,7 @@ const Detail = () => {
         return <div>Loading...</div>;
     }
 
-    const { name, imagen, stats, height, weight, types } = pokemon;
+    const { name, imagen, stats, height, weight, types, hp, attack, defense, speed } = pokemon;
 
 
     return (
@@ -61,7 +61,9 @@ const Detail = () => {
 
                 <div className="head-detail">
                     <div className="idName">
-                        <h2>No.{id}</h2>
+                        <h2>
+                            No. {isNaN(id) ? 'Creacion' : id}
+                        </h2>
                         <h2 className="name">{name?.toUpperCase()}</h2>
 
                     </div>
@@ -78,12 +80,41 @@ const Detail = () => {
                     </div>
 
                     <div> 
-                        {stats?.map((stat)=> 
+                        {
+                            hp && attack && defense && speed ? 
+                            <div>
+                                <div className="container-stats">
+                                    <p><strong className="hp">HP:</strong></p>
+                                    <p className="baseStat">{hp}</p>
+                                </div>
+
+                                <div className="container-stats">
+                                    <p><strong className="attack">ATTACK:</strong></p>
+                                    <p className="baseStat">{attack}</p>
+                                </div>
+
+                                <div className="container-stats">
+                                    <p><strong className="defense">DEFENSE:</strong></p>
+                                    <p className="baseStat">{defense}</p>
+                                </div>
+
+                                <div className="container-stats">
+                                    <p><strong className="speed">SPEED:</strong></p>
+                                    <p className="baseStat">{speed}</p>
+                                </div>
+
+                            </div>
+                            
+                            
+                            : 
+
+                            stats?.map((stat)=> 
                             <div className="container-stats">
                                 <p><strong className={stat[0]}>{stat[0]?.toUpperCase()}:</strong></p>
                                 <p className="baseStat">{stat[1]}</p>
                             </div>
-                        )}
+                        )
+                         }
                         </div>
 
                     <NavLink to="/Home" className="linkHomeD">HOME</NavLink>

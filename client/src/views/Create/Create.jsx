@@ -13,12 +13,14 @@ const Create = () => {
     const [input, setInput] = useState({
         imagen: "",
         name: "",
-        vida: "",
-        ataque: "",
-        defensa: "",
-        velocidad: "",
-        altura: "",
-        peso: ""
+        hp: "",
+        attack: "",
+        defense: "",
+        speed: "",
+        specialAttack: "",
+        specialDefense: "",
+        height: "",
+        weight: "",
     });
 
     const [selectTypes, setSelectTypes] = useState([]);
@@ -26,21 +28,23 @@ const Create = () => {
     const handleChange = (e) => {
         if (e.target.name === "types") {
             const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
-            setSelectTypes(prevTypes => [...prevTypes, ...selectedOptions]);
+            setSelectTypes(prevTypes => [...prevTypes, ...selectedOptions])
+        } else {
+            setInput({
+                ...input,
+                [e.target.name]: e.target.value
+            });
         }
-
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value
-        });
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const dataToSend = {
-                ...input
-            }
+                ...input,
+                types: selectTypes,
+            };
+            
             const responseBack = await axios.post("http://localhost:3001/pokemons", dataToSend, {
                 headers: {
                     'Content-Type': 'application/json', 
@@ -72,44 +76,53 @@ const Create = () => {
 
             <form onSubmit={handleSubmit}>
                 <div>
+                    <label >Name:</label>
+                    <input placeholder="Name" onChange={handleChange} name="name" value={input.value} ></input>
+                </div>
+
+                <div>
                     <label htmlFor="formFile">Imagen:</label>
                     <input name="imagen" type="file" id="formFile" value={input.value} onChange={handleChange} ></input>
                 </div>
 
                 <div>
-                    <label >Name:</label>
-                    <input placeholder="Name" onChange={handleChange} name="name" value={input.value} ></input>
-                </div>
-
-
-                <div>
-                    <label>Vida:</label>
-                    <input placeholder="Name" onChange={handleChange} name="name" value={input.value}></input>
+                    <label>Hp:</label>
+                    <input placeholder="Hp" onChange={handleChange} name="hp" value={input.value}></input>
                 </div>
 
                 <div>
-                    <label>Ataque:</label>
-                    <input placeholder="Name" onChange={handleChange} name="name" value={input.value}></input>
+                    <label>Attack:</label>
+                    <input placeholder="Attack" onChange={handleChange} name="attack" value={input.value}></input>
                 </div>
 
                 <div>
-                    <label>Defensa:</label>
-                    <input placeholder="Name" onChange={handleChange} name="name" value={input.value}></input>
+                    <label>Defense:</label>
+                    <input placeholder="Defense" onChange={handleChange} name="defense" value={input.value}></input>
                 </div>
 
                 <div>
-                    <label>Velocidad:</label>
-                    <input placeholder="Name" onChange={handleChange} name="name" value={input.value}></input>
+                    <label>Special-Attack:</label>
+                    <input placeholder="Attack" onChange={handleChange} name="specialAttack" value={input.value}></input>
                 </div>
 
                 <div>
-                    <label>Altura:</label>
-                    <input placeholder="Name" onChange={handleChange} name="name" value={input.value}></input>
+                    <label>Special-Defense:</label>
+                    <input placeholder="Defense" onChange={handleChange} name="specialDefense" value={input.value}></input>
                 </div>
 
                 <div>
-                    <label>Peso:</label>
-                    <input placeholder="Name" onChange={handleChange} name="name" value={input.value}></input>
+                    <label>Speed:</label>
+                    <input placeholder="Speed" onChange={handleChange} name="speed" value={input.value}></input>
+                </div>
+
+                <div>
+                    <label>Height:</label>
+                    <input placeholder="Name" onChange={handleChange} name="height" value={input.value}></input>
+                </div>
+
+                <div>
+                    <label>Weight:</label>
+                    <input placeholder="Name" onChange={handleChange} name="weight" value={input.value}></input>
                 </div>
 
                 <div>
