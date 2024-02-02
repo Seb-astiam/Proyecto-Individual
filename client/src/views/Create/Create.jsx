@@ -71,10 +71,12 @@ const Create = () => {
 
     return (
         <div className="container-form">
-            <NavLink to="/Home">Back</NavLink>
-            Estas en el Create
 
-            <form onSubmit={handleSubmit}>
+            <div className="link-Create">
+                <NavLink to="/Home" className="navlinkCreate">BACK</NavLink>
+            </div>
+
+            <form onSubmit={handleSubmit} className="formCreate">
                 <div>
                     <label >Name:</label>
                     <input placeholder="Name" onChange={handleChange} name="name" value={input.value} ></input>
