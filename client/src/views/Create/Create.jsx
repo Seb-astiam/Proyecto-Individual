@@ -74,60 +74,61 @@ const Create = () => {
 
             <div className="link-Create">
                 <NavLink to="/Home" className="navlinkCreate">BACK</NavLink>
+                <h1 className="H">CREATE POKEMON</h1>
             </div>
 
             <form onSubmit={handleSubmit} className="formCreate">
-                <div>
+                <div className="casillas">
                     <label >Name:</label>
                     <input placeholder="Name" onChange={handleChange} name="name" value={input.value} ></input>
                 </div>
 
-                <div>
+                <div className="casillas">
                     <label htmlFor="formFile">Imagen:</label>
                     <input name="imagen" type="file" id="formFile" value={input.value} onChange={handleChange} ></input>
                 </div>
 
-                <div>
+                <div className="casillas">
                     <label>Hp:</label>
                     <input placeholder="Hp" onChange={handleChange} name="hp" value={input.value}></input>
                 </div>
 
-                <div>
+                <div className="casillas">
                     <label>Attack:</label>
                     <input placeholder="Attack" onChange={handleChange} name="attack" value={input.value}></input>
                 </div>
 
-                <div>
+                <div className="casillas">
                     <label>Defense:</label>
                     <input placeholder="Defense" onChange={handleChange} name="defense" value={input.value}></input>
                 </div>
 
-                <div>
+                <div className="casillas">
                     <label>Special-Attack:</label>
                     <input placeholder="Attack" onChange={handleChange} name="specialAttack" value={input.value}></input>
                 </div>
 
-                <div>
+                <div className="casillas">
                     <label>Special-Defense:</label>
                     <input placeholder="Defense" onChange={handleChange} name="specialDefense" value={input.value}></input>
                 </div>
 
-                <div>
+                <div className="casillas">
                     <label>Speed:</label>
                     <input placeholder="Speed" onChange={handleChange} name="speed" value={input.value}></input>
                 </div>
 
-                <div>
+                <div className="casillas">
                     <label>Height:</label>
-                    <input placeholder="Name" onChange={handleChange} name="height" value={input.value}></input>
+                    <input placeholder="Height" onChange={handleChange} name="height" value={input.value}></input>
                 </div>
 
-                <div>
+                <div className="casillas">
                     <label>Weight:</label>
                     <input placeholder="Name" onChange={handleChange} name="weight" value={input.value}></input>
                 </div>
 
-                <div>
+                <div className="casillas">
                     <label>Types:</label>
                     <select
                         name="types"
@@ -155,7 +156,7 @@ const Create = () => {
                 </div>
                 )}
 
-                <button  type="button" onClick={handleReset}>Clear Types</button>
+                <button  type="button" onClick={handleReset} className="clearTypes">Clear Types</button>
                 <button  type="submit">Submit</button>
                 
             </form>

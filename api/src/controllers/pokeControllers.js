@@ -20,7 +20,7 @@ const getInfoAPI = async ({ URL, id, name }) => {
         return filtradoInfoAPI
     }
     if (URL && !id) {
-        const responseAPI = await axios.get(`${URL}?offset=0&limit=50`);
+        const responseAPI = await axios.get(`${URL}?offset=0&limit=150`);
         const segundaVuelta = responseAPI.data.results;
         const terceraVuelta = await segundaVuelta.map((pokemon) => {
             return pokemon.name
@@ -74,13 +74,11 @@ const getPokemonsControllers = async () => {
 
 const getPokemonByNameControllers = async (name) => {
     try {
-        if(name) {
             const pokemonDB = await Pokemon.findAll({where: {name: name}});
-            return pokemonDB
-        } else {
             const pokemonsByName = await getInfoAPI({ URL, name});
-            return pokemonsByName
-        }
+
+            return [pokemonsByName, pokemonDB]
+            
     }
     catch (error) {
         console.error("Error en getPokemonByNameControllers:", error);

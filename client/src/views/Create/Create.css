@@ -1,12 +1,8 @@
 .container-form {
-
     background-image: url("./fondoCreate.jpeg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
-    align-items:center;
-    justify-content: space-evenly;
 
     height: 100vh;
     width: 100%;
@@ -14,11 +10,24 @@
 
 .link-Create {
     display: flex;
-    background-color: aqua;
-    padding: 20px;
-    top: 20px;
-    left: 20px;
+    justify-content: space-between;
+    padding: 20px 20px 0 20px;
+    
+    font-family: 'Pokemon Fire Red', monospace;
+    text-shadow: -2px 2px 1px GhostWhite;
+}
 
+.H {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+    background: linear-gradient(to bottom right, #79B5E3, #FEDD1A);
+    width: 500px;
+    padding: 4px;
+    border-radius: 8px;
+    box-shadow: -7px 7px 3px black;
 }
 
 .navlinkCreate {
@@ -43,9 +52,31 @@
 .formCreate {
     display: flex;
     flex-direction: column;
-
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    background-color: white;
-    padding: 40px;
+
+    background: linear-gradient(to bottom ,#FFF8DC,#FFEBCD,#FFE4C4,#FFDEAD,#F5DEB3,#DEB887,#D2B48C,#F4A460,#CD853F,#D2691E,#8B4513,#A0522D);
+
+    padding: 30px 0px 30px 0px;
+    margin-top: 40px;
+    margin-left: 215px;
+    height: 700px;
+    width: 40%;
+    
+    border: 8px ridge black;
+    border-radius: 15px;
+}
+
+.casillas {
+    background-color: gray;
+    border-radius: 0 3px 3px 0;
+    border: 3px ridge black;
+    text-shadow: 1px 1px 1px black;
+    font-family: monospace;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
 }

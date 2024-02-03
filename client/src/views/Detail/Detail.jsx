@@ -18,7 +18,10 @@ const Detail = () => {
     const pokemonesFiltrados = pokemons.filter(poke => poke.id !== parseInt(id));
 
     let numPokes;
-    if (parseInt(id) === 1) {
+    if(isNaN(id)){
+        numPokes = pokemonesFiltrados.slice(1, 5);
+    }
+    else if (parseInt(id) === 1) {
         numPokes = pokemonesFiltrados.slice(parseInt(id)-1, parseInt(id) + 3);
     } else if (parseInt(id) === 2) {
         numPokes = pokemonesFiltrados.slice(parseInt(id) - 1, parseInt(id) + 3);
@@ -51,7 +54,20 @@ const Detail = () => {
         return <div>Loading...</div>;
     }
 
-    const { name, imagen, stats, height, weight, types, hp, attack, defense, speed } = pokemon;
+    const { name, imagen, stats, height, weight, types, Types, hp, attack, defense, speed, specialAttack, specialDefense } = pokemon;
+
+    // let typeElements = null;
+
+    // if (Array.isArray(Types)) {
+    //     typeElements = Types?.map((type, index) => (
+    //         <p key={index} className={type.name}>{type.name}</p>
+    //     ));
+    // } else if (typeof types === 'string') {
+    //     const typesArray = types?.split(",").map(type => type.trim());
+    //     typeElements = typesArray.map((typeName, index) => (
+    //         <p key={11 + index} className={typeName}>{typeName}</p>
+    //     ));
+    // }
 
 
     return (
@@ -69,6 +85,10 @@ const Detail = () => {
                     </div>
 
                     <img src={imagen} className="img-detail"/>
+
+                    {/* <div className="row-p">
+                        {typeElements}
+                    </div> */}
 
                 </div>
 
@@ -96,6 +116,16 @@ const Detail = () => {
                                 <div className="container-stats">
                                     <p><strong className="defense">DEFENSE:</strong></p>
                                     <p className="baseStat">{defense}</p>
+                                </div>
+
+                                <div className="container-stats">
+                                    <p><strong className="special-attack">SPECIAL-ATTACK:</strong></p>
+                                    <p className="baseStat">{specialAttack}</p>
+                                </div>
+
+                                <div className="container-stats">
+                                    <p><strong className="special-defense">SPECIAL-DEFENSE:</strong></p>
+                                    <p className="baseStat">{specialDefense}</p>
                                 </div>
 
                                 <div className="container-stats">

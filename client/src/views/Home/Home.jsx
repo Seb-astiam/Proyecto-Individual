@@ -43,7 +43,8 @@ const Home = () => {
         setNotFound(false);
         try {
             const responseBackend = await axios.get(`http://localhost:3001/pokemons?name=${search}`);
-            dispatch(getPokemonByName(responseBackend.data));
+            const uno = responseBackend.data.filter((response) => response.id && response.imagen);
+            dispatch(getPokemonByName(uno));
             
         } catch (error) {
             setNotFound(true);
