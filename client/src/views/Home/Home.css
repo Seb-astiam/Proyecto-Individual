@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
 
-    background-image: url('./170625035442602673.png'), url('./fondoHome.png');
+    background-image: url('./170625035442602673.png'), url('../../assets/fondoHome.png');
     background-repeat: no-repeat, no-repeat;
     background-size: auto, cover;
     background-position: top right, bottom;

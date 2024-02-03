@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
 
-    background-image: url("./imgContainerDetail.png"), linear-gradient(to right, black, gray);
+    background-image: url("../../assets/imgContainerDetail.png"), linear-gradient(to right, black, gray);
   background-size: cover; /* Puedes ajustar según tus necesidades */
   background-position: center;
   background-repeat: no-repeat;
@@ -19,7 +19,7 @@
 
 .detail {
 
-    background-image: url("./fondoDetail.jpg");
+    background-image: url("../../assets/fondoDetail.jpg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

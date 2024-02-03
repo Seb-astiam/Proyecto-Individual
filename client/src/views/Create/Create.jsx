@@ -13,15 +13,32 @@ const Create = () => {
     const [input, setInput] = useState({
         imagen: "",
         name: "",
-        hp: "",
-        attack: "",
-        defense: "",
-        speed: "",
+        hp: "50",
+        attack: "50",
+        defense: "50",
+        speed: "50",
         specialAttack: "",
         specialDefense: "",
-        height: "",
-        weight: "",
+        height: "0",
+        weight: "0",
     });
+
+    // const [error, setError] = useState({
+    //     imagen: "",
+    //     name: "",
+    //     hp: "",
+    //     attack: "",
+    //     defense: "",
+    //     speed: "",
+    //     specialAttack: "",
+    //     specialDefense: "",
+    //     height: "",
+    //     weight: ""
+    // })
+
+    // const validate = (input) => {
+
+    // }
 
     const [selectTypes, setSelectTypes] = useState([]);
 
@@ -77,66 +94,129 @@ const Create = () => {
                 <h1 className="H">CREATE POKEMON</h1>
             </div>
 
-            <form onSubmit={handleSubmit} className="formCreate">
+            <form onSubmit={handleSubmit} className="formCreate" enctype =" multipart/form-data">
+            <p>
+                Los campos obligatorios van seguidos de
+                <strong> <abbr title="required"> * </abbr> </strong>.
+            </p>
+
                 <div className="casillas">
                     <label >Name:</label>
                     <input placeholder="Name" onChange={handleChange} name="name" value={input.value} ></input>
+                    <label for="name"
+                        ><abbr title="required" aria-label="required">*</abbr></label
+                    >
                 </div>
 
                 <div className="casillas">
                     <label htmlFor="formFile">Imagen:</label>
-                    <input name="imagen" type="file" id="formFile" value={input.value} onChange={handleChange} ></input>
+                    <input name="imagen" type="file" id="formFile" accept="image/*" value={input.value} onChange={handleChange} ></input>
+                    <label for="imagen"
+                        ><abbr title="required" aria-label="required">*</abbr></label
+                    >
                 </div>
 
                 <div className="casillas">
                     <label>Hp:</label>
-                    <input placeholder="Hp" onChange={handleChange} name="hp" value={input.value}></input>
+                    <input placeholder="Hp" onChange={handleChange} name="hp" value={input.value}
+                        type="range"
+                        id="hp"
+                        min="1"
+                        max="100"
+                        step="1"
+                    ></input>
+                    <p>{input.hp}</p>
+                    <label for="hp"
+                        ><abbr title="required" aria-label="required">*</abbr></label
+                    >
                 </div>
 
                 <div className="casillas">
                     <label>Attack:</label>
-                    <input placeholder="Attack" onChange={handleChange} name="attack" value={input.value}></input>
+                    <input placeholder="Attack" onChange={handleChange} name="attack" value={input.value}
+                        type="range"
+                        id="attack"
+                        min="1"
+                        max="100"
+                        step="1"
+                    ></input>
+                    <p>{input.attack}</p>
+                    <label for="attack"
+                        ><abbr title="required" aria-label="required">*</abbr></label
+                    >
                 </div>
 
                 <div className="casillas">
                     <label>Defense:</label>
-                    <input placeholder="Defense" onChange={handleChange} name="defense" value={input.value}></input>
+                    <input placeholder="Defense" onChange={handleChange} name="defense" value={input.value}
+                        type="range"
+                        id="defense"
+                        min="1"
+                        max="100"
+                        step="1"
+                    ></input>
+                    <p>{input.defense}</p>
+                    <label for="defense"
+                        ><abbr title="required" aria-label="required">*</abbr></label
+                    >
                 </div>
 
                 <div className="casillas">
                     <label>Special-Attack:</label>
-                    <input placeholder="Attack" onChange={handleChange} name="specialAttack" value={input.value}></input>
+                    <input placeholder="Attack" onChange={handleChange} name="specialAttack" value={input.value}
+                        type="range"
+                        id="specialAttack"
+                        min="1"
+                        max="150"
+                        step="1"
+                    ></input>
+                    <p>{input.specialAttack}</p>
                 </div>
 
                 <div className="casillas">
                     <label>Special-Defense:</label>
-                    <input placeholder="Defense" onChange={handleChange} name="specialDefense" value={input.value}></input>
+                    <input placeholder="Defense" onChange={handleChange} name="specialDefense" value={input.value}
+                        type="range"
+                        id="specialDefense"
+                        min="1"
+                        max="150"
+                        step="1"
+                    ></input>
+                    <p>{input.specialDefense}</p>
                 </div>
 
                 <div className="casillas">
                     <label>Speed:</label>
-                    <input placeholder="Speed" onChange={handleChange} name="speed" value={input.value}></input>
+                    <input placeholder="Speed" onChange={handleChange} name="speed" value={input.value}
+                        type="range"
+                        id="speed"
+                        min="1"
+                        max="100"
+                        step="1"
+                    ></input>
+                    <p>{input.speed}</p>
                 </div>
 
                 <div className="casillas">
                     <label>Height:</label>
                     <input placeholder="Height" onChange={handleChange} name="height" value={input.value}></input>
+                    <p className="unidadMedida">m</p>
                 </div>
 
                 <div className="casillas">
                     <label>Weight:</label>
-                    <input placeholder="Name" onChange={handleChange} name="weight" value={input.value}></input>
+                    <input placeholder="Weight" onChange={handleChange} name="weight" value={input.value}></input>
+                    <p className="unidadMedida">kg</p>
                 </div>
 
                 <div className="casillas">
-                    <label>Types:</label>
+                    <label>Choose types:</label>
                     <select
                         name="types"
                         multiple
                         value={selectTypes || []} 
                         onChange={handleChange}
                     >
-                        <option value="">Choose types</option>
                             {types.map((type) => (
                                 <option key={type.id} value={type.id}>
                                 {type.name}
@@ -145,7 +225,7 @@ const Create = () => {
                     </select>
                 </div>
 
-                {selectTypes.length > 0 && (
+                {selectTypes.length >= 0 && selectTypes.length <= 2 ?  (
                 <div>
                     <p>Selected Types:</p>
                     <ul>
@@ -154,7 +234,13 @@ const Create = () => {
                     ))}
                     </ul>
                 </div>
-                )}
+                )
+                :
+
+                <div>
+                    <button  type="button" onClick={handleReset} className="clearTypes">Maximo son 2 tipos!</button>
+                </div>
+                }
 
                 <button  type="button" onClick={handleReset} className="clearTypes">Clear Types</button>
                 <button  type="submit">Submit</button>

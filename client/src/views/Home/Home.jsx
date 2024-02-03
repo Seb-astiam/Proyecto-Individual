@@ -13,7 +13,7 @@ import useHome from "../../Hooks/useHome";
 import axios from "axios";
 
 import "./Home.css"
-import imagenHome from "./imagen-home.png"
+import imagenHome from "../../assets/imagen-home.png"
 
 const Home = () => {
     const pokemons = useHome();

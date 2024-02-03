@@ -1,5 +1,5 @@
 .container-form {
-    background-image: url("./fondoCreate.jpeg");
+    background-image: url("../../assets/fondoCreate.jpeg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -69,14 +69,20 @@
 
 .casillas {
     background-color: gray;
+    background: rgb(134, 185, 57);
     border-radius: 0 3px 3px 0;
     border: 3px ridge black;
     text-shadow: 1px 1px 1px black;
     font-family: monospace;
     color: white;
 
+    padding: 5px;
+
     display: flex;
-    flex-direction: column;
 
     align-items: center;
+}
+
+.unidadMedida {
+    margin-left: 5px;
 }

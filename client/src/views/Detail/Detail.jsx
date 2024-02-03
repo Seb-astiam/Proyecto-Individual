@@ -54,20 +54,7 @@ const Detail = () => {
         return <div>Loading...</div>;
     }
 
-    const { name, imagen, stats, height, weight, types, Types, hp, attack, defense, speed, specialAttack, specialDefense } = pokemon;
-
-    // let typeElements = null;
-
-    // if (Array.isArray(Types)) {
-    //     typeElements = Types?.map((type, index) => (
-    //         <p key={index} className={type.name}>{type.name}</p>
-    //     ));
-    // } else if (typeof types === 'string') {
-    //     const typesArray = types?.split(",").map(type => type.trim());
-    //     typeElements = typesArray.map((typeName, index) => (
-    //         <p key={11 + index} className={typeName}>{typeName}</p>
-    //     ));
-    // }
+    const { name, imagen, stats, height, weight, hp, attack, defense, speed, specialAttack, specialDefense } = pokemon;
 
 
     return (
@@ -86,17 +73,22 @@ const Detail = () => {
 
                     <img src={imagen} className="img-detail"/>
 
-                    {/* <div className="row-p">
-                        {typeElements}
-                    </div> */}
-
                 </div>
 
                 <div className="body-detail">
 
-                    <div className="parte1Body">
-                        <p><strong>Weight:</strong> {weight}</p>
-                        <p><strong>Height:</strong> {height}</p>
+                    <div >
+                        {isNaN(id) ? 
+                            <div className="parte1Body">
+                                <p><strong>Weight:</strong> {weight} kg</p>
+                                <p><strong>Height:</strong> {height} m</p>
+                            </div>
+                            :
+                            <div className="parte1Body">
+                                <p><strong>Weight:</strong> {weight/10} kg</p>
+                                <p><strong>Height:</strong> {height/10} m</p>
+                            </div>
+                         }
                     </div>
 
                     <div> 
