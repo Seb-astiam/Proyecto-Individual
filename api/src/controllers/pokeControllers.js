@@ -20,7 +20,7 @@ const getInfoAPI = async ({ URL, id, name }) => {
         return filtradoInfoAPI
     }
     if (URL && !id) {
-        const responseAPI = await axios.get(`${URL}?offset=0&limit=150`);
+        const responseAPI = await axios.get(`${URL}?offset=0&limit=50`);
         const segundaVuelta = responseAPI.data.results;
         const terceraVuelta = await segundaVuelta.map((pokemon) => {
             return pokemon.name

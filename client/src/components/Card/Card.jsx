@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+
+import pokemonCreado from "../../assets/pokemon-creado.png"
 import "./Card.css"
 
 const Card = ({ pokemon }) => {
@@ -19,6 +21,8 @@ const Card = ({ pokemon }) => {
     }
 
 
+
+
     return ( 
         <div>
             <div className={`container-card`}>
@@ -27,7 +31,7 @@ const Card = ({ pokemon }) => {
                         No. {isNaN(id) ? 'Creacion' : id} <strong>{name?.toUpperCase()}</strong>
                     </p>
                 </NavLink>
-                <img src={imagen} alt="Imagen" className="imagen-card" />
+                {isNaN(id) ? <img src={pokemonCreado} alt="Imagen" className="imagen-card" /> : <img src={imagen} alt="Imagen" className="imagen-card" /> }
                 <div className="row-p">
                     {typeElements}
                 </div>

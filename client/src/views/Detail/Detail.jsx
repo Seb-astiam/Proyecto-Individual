@@ -4,6 +4,8 @@ import { NavLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemonById } from "../../Redux/pokeSlice";
 
+import pokemonCreado from "../../assets/pokemon-creado.png"
+
 import "./Detail.css"
 import useHome from "../../Hooks/useHome";
 import Card from "../../components/Card/Card";
@@ -70,9 +72,7 @@ const Detail = () => {
                         <h2 className="name">{name?.toUpperCase()}</h2>
 
                     </div>
-
-                    <img src={imagen} className="img-detail"/>
-
+                    {isNaN(id) ? <img src={pokemonCreado} className="img-detail"/> : <img src={imagen} className="img-detail"/> }
                 </div>
 
                 <div className="body-detail">

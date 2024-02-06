@@ -7,7 +7,6 @@ import NotFound from './views/NotFound/NotFound';
 import Detail from './views/Detail/Detail';
 import Create from './views/Create/Create';
 
-import './App.css'
 
 function App() {
 
