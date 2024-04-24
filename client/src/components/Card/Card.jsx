@@ -25,7 +25,7 @@ const Card = ({ pokemon }) => {
 
     return ( 
         <div>
-            <div className={`container-card`}>
+            <div className='container-card'>
             <NavLink to={`/Home/${id}`} className="link-card">
                     <p>
                         No. {isNaN(id) ? 'Creacion' : id} <strong>{name?.toUpperCase()}</strong>

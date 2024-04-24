@@ -13,19 +13,18 @@
 
     background-color: whitesmoke;
 
-    border: 2px solid black;
+    border: 2px solid #63005C;
     border-radius: 8px;
 
     text-decoration: none;
     text-align: center;
     font-family: monospace;
 
-    color: black;
+    color: #63005C;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.1s;
 }
 
 .Nav-link:active {
-    background-color: #ccc; 
     transform: translateY(2px); 
 }

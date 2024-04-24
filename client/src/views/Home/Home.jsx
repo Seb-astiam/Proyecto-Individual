@@ -35,11 +35,12 @@ const Home = () => {
 
     const handleChange = (e) => {
         e.preventDefault();
-        setSearch(e.target.value);
+        const name = e.target.value
+        setSearch(name.toLowerCase());
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         setNotFound(false);
         try {
             const responseBackend = await axios.get(`http://localhost:3001/pokemons?name=${search}`);
@@ -53,8 +54,13 @@ const Home = () => {
     }
 
     const filterTypes = (type) => {
-        const search = pokemons.filter((pokemon) => pokemon.types?.includes((type)));
-        dispatch(filterPokemonType(search));
+        if(type) {
+            const search = pokemons.filter((pokemon) => pokemon.types?.includes(type));
+            dispatch(filterPokemonType(search));
+        } else {
+            dispatch(filterPokemonType([...pokemons]))
+        }
+
     }
 
     const orderName = (A) => {
@@ -69,23 +75,23 @@ const Home = () => {
 
     const filterDbOrApi = (props) => {
         if (props === "BD") {
-            const filterDb = [...pokemons].filter((pokemon) => pokemon.id.toString().length > 5);
+            const filterDb = [...pokemons].filter((pokemon) => isNaN(pokemon.id));
             dispatch(filterPokemonType(filterDb))
         } 
         else if (props === "API") {
             const filterApi = [...pokemons].filter((pokemon) => typeof pokemon.id === 'number');
             dispatch(filterPokemonType(filterApi));
+        } else {
+            dispatch(filterPokemonType([...pokemons]))
         }
-
-        
-
     }
+
 
 
     return (
         <div className="container-home">
             <img src={imagenHome} />
-            <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} filterTypes={filterTypes} orderName={orderName} filterDbOrApi={filterDbOrApi}/>
+            <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} filterTypes={filterTypes} orderName={orderName} filterDbOrApi={filterDbOrApi} />
             <Nav />
             {notFound ? <NotFound /> : (filterPokemon.length > 0 ? <Cards pokemons={filterPokemon} /> : <p>Cargando...</p>)}
         </div>

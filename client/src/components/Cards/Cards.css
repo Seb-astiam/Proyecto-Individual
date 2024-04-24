@@ -50,8 +50,3 @@
     border: 3px outset black;
     border-radius: 8px;
 }
-
-.btn-cards:active {
-    border: 5px inset;
-    transform: translateY(2px); 
-}

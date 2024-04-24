@@ -23,26 +23,42 @@ const Create = () => {
         weight: "0",
     });
 
-    // const [error, setError] = useState({
-    //     imagen: "",
-    //     name: "",
-    //     hp: "",
-    //     attack: "",
-    //     defense: "",
-    //     speed: "",
-    //     specialAttack: "",
-    //     specialDefense: "",
-    //     height: "",
-    //     weight: ""
-    // })
+    const [error, setError] = useState({
+        name: "",   
+        attack: "",  
+    })
 
-    // const validate = (input) => {
+    const validate = (name, value) => {
 
-    // }
+        if(value) {
+            name === "name" ? setError((prevent) => ({
+                            ...prevent,
+                            name: "faltan valores"
+                        }))
+
+                        : 
+
+                        null
+        }
+
+        else {
+
+        }
+        // if(name === "name") {
+        //     if(value){
+        //         setError((prevent) => ({
+        //             ...prevent,
+        //             name: "faltan valores"
+        //         }))
+        //     }
+
+        // }
+    }
 
     const [selectTypes, setSelectTypes] = useState([]);
 
     const handleChange = (e) => {
+
         if (e.target.name === "types") {
             const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
             setSelectTypes(prevTypes => [...prevTypes, ...selectedOptions])
@@ -51,28 +67,35 @@ const Create = () => {
                 ...input,
                 [e.target.name]: e.target.value
             });
+
+            validate(e.target.name, e.target.value)
         }
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         try {
-            const dataToSend = {
-                ...input,
-                types: selectTypes,
-            };
-            
-            const responseBack = await axios.post("http://localhost:3001/pokemons", dataToSend, {
-                headers: {
-                    'Content-Type': 'application/json', 
-                },
-            });
 
-            if (responseBack.status === 200) {
-                console.log('Datos enviados con éxito', dataToSend);
-              } else {
-                console.error('Error al enviar datos al servidor', responseBack.data);
-              }
+            if(!input.name) {
+                alert("no vas a hacer submit")
+            } else {
+                const dataToSend = {
+                    ...input,
+                    types: selectTypes,
+                };
+                
+                const responseBack = await axios.post("http://localhost:3001/pokemons", dataToSend, {
+                    headers: {
+                        'Content-Type': 'application/json', 
+                    },
+                });
+    
+                if (responseBack.status === 200) {
+                    console.log('Datos enviados con éxito', dataToSend);
+                  } else {
+                    console.error('Error al enviar datos al servidor', responseBack.data);
+                  }
+            }
+
         }
         catch (error) {
             console.error('Error de red', error);
@@ -104,16 +127,16 @@ const Create = () => {
                     <label >Name:</label>
                     <input placeholder="Name" onChange={handleChange} name="name" value={input.value} ></input>
                     <label for="name"
-                        ><abbr title="required" aria-label="required">*</abbr></label
-                    >
+                        ><abbr title="required" aria-label="required">*</abbr>
+                    </label>
                 </div>
 
                 <div className="casillas">
                     <label htmlFor="formFile">Imagen:</label>
                     <input name="imagen" type="file" id="formFile" accept="image/*" value={input.value} onChange={handleChange} ></input>
                     <label for="imagen"
-                        ><abbr title="required" aria-label="required">*</abbr></label
-                    >
+                        ><abbr title="required" aria-label="required">*</abbr>
+                    </label>
                 </div>
 
                 <div className="casillas">
@@ -127,8 +150,8 @@ const Create = () => {
                     ></input>
                     <p>{input.hp}</p>
                     <label for="hp"
-                        ><abbr title="required" aria-label="required">*</abbr></label
-                    >
+                        ><abbr title="required" aria-label="required">*</abbr>
+                    </label>
                 </div>
 
                 <div className="casillas">
@@ -142,8 +165,8 @@ const Create = () => {
                     ></input>
                     <p>{input.attack}</p>
                     <label for="attack"
-                        ><abbr title="required" aria-label="required">*</abbr></label
-                    >
+                        ><abbr title="required" aria-label="required">*</abbr>
+                    </label>
                 </div>
 
                 <div className="casillas">
@@ -157,8 +180,8 @@ const Create = () => {
                     ></input>
                     <p>{input.defense}</p>
                     <label for="defense"
-                        ><abbr title="required" aria-label="required">*</abbr></label
-                    >
+                        ><abbr title="required" aria-label="required">*</abbr>
+                    </label>
                 </div>
 
                 <div className="casillas">
